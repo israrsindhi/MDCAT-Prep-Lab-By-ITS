@@ -21,6 +21,8 @@
     --coral: #D8492A;
     --planned: #A9B8B3;
     --planned-tint: #EEF2F0;
+    --live: #0E6E5C;
+    --live-tint: #E4F1EC;
     --radius: 14px;
     --shadow: 0 1px 2px rgba(20,37,33,0.04), 0 8px 24px rgba(20,37,33,0.05);
   }
@@ -279,6 +281,7 @@
     white-space:nowrap;
   }
   .status .swatch{ width:7px; height:7px; }
+  .status.live{ background:var(--live-tint); color:var(--live); }
   .status.ready{ background:var(--teal-tint); color:var(--teal-dark); }
   .status.yours{ background:var(--gold-tint); color:var(--gold); }
   .status.planned{ background:var(--planned-tint); color:var(--muted); }
@@ -357,8 +360,8 @@
 
     <div class="pulse-card">
       <div class="pulse-stat">
-        <div class="num mono" id="readyCount">7/50</div>
-        <div class="label">tests built and ready to open</div>
+        <div class="num mono" id="readyCount">3/50</div>
+        <div class="label">tests live and ready to open</div>
       </div>
       <svg class="pulse-line" viewBox="0 0 500 56" preserveAspectRatio="none">
         <path d="M0,28 L60,28 L80,8 L100,48 L120,28 L160,28 L180,14 L200,42 L220,28 L500,28"/>
@@ -370,7 +373,7 @@
     </div>
 
     <div class="legend">
-      <span><span class="swatch" style="background:var(--teal)"></span> Ready — open now</span>
+      <span><span class="swatch" style="background:var(--live)"></span> Live — open now</span>
       <span><span class="swatch" style="background:var(--gold)"></span> Drafted by you</span>
       <span><span class="swatch" style="background:var(--planned)"></span> Planned</span>
     </div>
@@ -379,10 +382,10 @@
 
 <main class="wrap">
   <div class="subject-pills">
-    <a class="pill" href="#biology"><svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#DCE7E2" stroke-width="3"/><circle cx="12" cy="12" r="10" fill="none" stroke="#0E6E5C" stroke-width="3" stroke-dasharray="62.8" stroke-dashoffset="18.8" stroke-linecap="round" transform="rotate(-90 12 12)"/></svg> Biology · 7/10</a>
+    <a class="pill" href="#biology"><svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#DCE7E2" stroke-width="3"/><circle cx="12" cy="12" r="10" fill="none" stroke="#0E6E5C" stroke-width="3" stroke-dasharray="62.8" stroke-dashoffset="18.8" stroke-linecap="round" transform="rotate(-90 12 12)"/></svg> Biology · 1/10</a>
     <a class="pill" href="#chemistry"><svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#DCE7E2" stroke-width="3"/></svg> Chemistry · 0/10</a>
-    <a class="pill" href="#physics"><svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#DCE7E2" stroke-width="3"/></svg> Physics · 0/10</a>
-    <a class="pill" href="#english"><svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#DCE7E2" stroke-width="3"/></svg> English · 0/10</a>
+    <a class="pill" href="#physics"><svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#DCE7E2" stroke-width="3"/><circle cx="12" cy="12" r="10" fill="none" stroke="#0E6E5C" stroke-width="3" stroke-dasharray="62.8" stroke-dashoffset="18.8" stroke-linecap="round" transform="rotate(-90 12 12)"/></svg> Physics · 1/10</a>
+    <a class="pill" href="#english"><svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#DCE7E2" stroke-width="3"/><circle cx="12" cy="12" r="10" fill="none" stroke="#0E6E5C" stroke-width="3" stroke-dasharray="62.8" stroke-dashoffset="18.8" stroke-linecap="round" transform="rotate(-90 12 12)"/></svg> English · 1/10</a>
     <a class="pill" href="#reasoning"><svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#DCE7E2" stroke-width="3"/></svg> Logical Reasoning · 0/10</a>
   </div>
 
@@ -412,13 +415,13 @@ const DATA = [
   {
     id: "biology", name: "Biology", tagline: "FSc Pre-Medical syllabus, 50 MCQs per test",
     tests: [
-      { t: "Introduction to Biology + Biological Molecules", status: "ready", file: "Biology_Mock_Test_01.md" },
-      { t: "Enzymes + Bioenergetics", status: "ready", file: "Biology_Mock_Test_02.md" },
-      { t: "The Cell — Structure, Membrane, Organelles", status: "ready", file: "Biology_Mock_Test_03.md" },
-      { t: "Prokaryotae, Viruses, Protista, Fungi", status: "ready", file: "Biology_Mock_Test_04.md" },
-      { t: "Kingdom Plantae + Kingdom Animalia", status: "ready", file: "Biology_Mock_Test_05.md" },
-      { t: "Nutrition + Gaseous Exchange", status: "ready", file: "Biology_Mock_Test_06.md" },
-      { t: "Transport + Homeostasis", status: "ready", file: "Biology_Mock_Test_07.md" },
+      { t: "Introduction to Biology + Biological Molecules", status: "live", link: "https://www.rayvila.com/g.php/260715131434" },
+      { t: "Enzymes + Bioenergetics", status: "planned" },
+      { t: "The Cell — Structure, Membrane, Organelles", status: "planned" },
+      { t: "Prokaryotae, Viruses, Protista, Fungi", status: "planned" },
+      { t: "Kingdom Plantae + Kingdom Animalia", status: "planned" },
+      { t: "Nutrition + Gaseous Exchange", status: "planned" },
+      { t: "Transport + Homeostasis", status: "planned" },
       { t: "Support & Movement + Coordination & Control", status: "planned" },
       { t: "Reproduction + Chromosomes/DNA + Cell Division", status: "planned" },
       { t: "Genetics + Evolution + Biotechnology + Ecology", status: "planned" }
@@ -442,7 +445,7 @@ const DATA = [
   {
     id: "physics", name: "Physics", tagline: "Mechanics through electronics",
     tests: [
-      { t: "Measurements & Vectors + Motion & Force", status: "yours" },
+      { t: "Measurements & Vectors + Motion & Force", status: "live", link: "https://www.rayvila.com/g.php/260715131507" },
       { t: "Work, Energy & Power + Rotational & Circular Motion", status: "planned" },
       { t: "Properties of Matter/Fluids + Oscillations", status: "planned" },
       { t: "Waves + Thermodynamics", status: "planned" },
@@ -457,7 +460,7 @@ const DATA = [
   {
     id: "english", name: "English", tagline: "Grammar, vocabulary & comprehension",
     tests: [
-      { t: "Parts of Speech + Sentence Structure", status: "yours" },
+      { t: "Parts of Speech + Sentence Structure", status: "live", link: "https://www.rayvila.com/g.php/260715131531" },
       { t: "Tenses (all forms)", status: "planned" },
       { t: "Active & Passive Voice", status: "planned" },
       { t: "Narration (Direct/Indirect Speech)", status: "planned" },
@@ -486,18 +489,20 @@ const DATA = [
   }
 ];
 
-const STATUS_LABEL = { ready: "Ready", yours: "Drafted", planned: "Planned" };
+const STATUS_LABEL = { live: "Live", ready: "Ready", yours: "Drafted", planned: "Planned" };
 
 function renderSubject(subj){
-  const readyN = subj.tests.filter(t => t.status === "ready").length;
-  const pct = Math.round((readyN / subj.tests.length) * 100);
+  const liveN = subj.tests.filter(t => t.status === "live" || t.status === "ready").length;
+  const pct = Math.round((liveN / subj.tests.length) * 100);
 
   const rows = subj.tests.map((t, i) => {
     const num = String(i+1).padStart(2,"0");
     const badge = `<span class="status ${t.status}"><span class="swatch" style="background:currentColor"></span>${STATUS_LABEL[t.status]}</span>`;
-    const action = t.status === "ready"
-      ? `<a class="btn open" href="${t.file}" download>Open test</a>`
-      : `<span class="btn locked">${t.status === "yours" ? "In your notes" : "Coming soon"}</span>`;
+    const action = (t.status === "live" || t.status === "ready") && t.link
+      ? `<a class="btn open" href="${t.link}" target="_blank">Open test</a>`
+      : t.status === "yours"
+        ? `<span class="btn locked">In your notes</span>`
+        : `<span class="btn locked">Coming soon</span>`;
     return `<div class="test-row">
       <span class="test-num mono">${num}</span>
       <span class="test-name">${t.t}</span>
@@ -518,7 +523,7 @@ function renderSubject(subj){
       </div>
       <div class="progress-block">
         <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
-        <div class="progress-text mono">${readyN}/10 ready</div>
+        <div class="progress-text mono">${liveN}/10 live</div>
       </div>
     </div>
     <div class="test-list">${rows}</div>
@@ -527,9 +532,9 @@ function renderSubject(subj){
 
 document.getElementById("subjects").innerHTML = DATA.map(renderSubject).join("");
 
-const totalReady = DATA.reduce((sum, s) => sum + s.tests.filter(t => t.status === "ready").length, 0);
+const totalLive = DATA.reduce((sum, s) => sum + s.tests.filter(t => t.status === "live" || t.status === "ready").length, 0);
 const totalTests = DATA.reduce((sum, s) => sum + s.tests.length, 0);
-document.getElementById("readyCount").textContent = `${totalReady}/${totalTests}`;
+document.getElementById("readyCount").textContent = `${totalLive}/${totalTests}`;
 </script>
 
 </body>
