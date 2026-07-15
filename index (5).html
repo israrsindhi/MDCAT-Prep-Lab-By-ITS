@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MDCAT Prep Lab — Chapter-wise Mock Tests</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F5F8F6;
+    --surface: #FFFFFF;
+    --border: #DCE7E2;
+    --text: #142521;
+    --muted: #4B5F5A;
+    --teal: #0E6E5C;
+    --teal-dark: #0A4F42;
+    --teal-tint: #E4F1EC;
+    --gold: #C98A2E;
+    --gold-tint: #FBF0DC;
+    --coral: #D8492A;
+    --planned: #A9B8B3;
+    --planned-tint: #EEF2F0;
+    --radius: 14px;
+    --shadow: 0 1px 2px rgba(20,37,33,0.04), 0 8px 24px rgba(20,37,33,0.05);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+
+  h1,h2,h3, .display{
+    font-family:'Space Grotesk', sans-serif;
+    letter-spacing:-0.01em;
+  }
+
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+
+  a{ color:inherit; }
+
+  :focus-visible{
+    outline: 2.5px solid var(--teal);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* ---------- layout shells ---------- */
+  .wrap{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- top nav ---------- */
+  .topnav{
+    position: sticky;
+    top:0;
+    z-index: 20;
+    background: rgba(245,248,246,0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .topnav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:64px;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-weight:700;
+    font-size:1.05rem;
+  }
+  .logo-mark{
+    width:26px; height:26px;
+    flex-shrink:0;
+  }
+  .navlinks{
+    display:flex;
+    gap:4px;
+    flex-wrap:wrap;
+  }
+  .navlinks a{
+    text-decoration:none;
+    font-size:0.86rem;
+    font-weight:500;
+    color:var(--muted);
+    padding:7px 12px;
+    border-radius:999px;
+    transition:background .15s, color .15s;
+  }
+  .navlinks a:hover{ background:var(--teal-tint); color:var(--teal-dark); }
+
+  /* ---------- hero ---------- */
+  .hero{ padding: 64px 0 40px; }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--teal-dark);
+    background:var(--teal-tint);
+    padding:6px 12px;
+    border-radius:999px;
+    margin-bottom:22px;
+  }
+  .eyebrow .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--coral);
+    animation: blink 1.6s ease-in-out infinite;
+  }
+  @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:.25;} }
+
+  .hero h1{
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    font-weight:700;
+    margin: 0 0 18px;
+    max-width: 15ch;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--teal);
+  }
+  .hero p{
+    max-width: 52ch;
+    color:var(--muted);
+    font-size:1.06rem;
+    margin: 0 0 36px;
+  }
+
+  .pulse-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 26px 28px;
+    display:flex;
+    align-items:center;
+    gap: 30px;
+    flex-wrap:wrap;
+  }
+  .pulse-stat{ min-width: 150px; }
+  .pulse-stat .num{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:2.4rem;
+    font-weight:700;
+    line-height:1;
+  }
+  .pulse-stat .label{
+    font-size:0.82rem;
+    color:var(--muted);
+    margin-top:6px;
+  }
+  .pulse-line{ flex:1; min-width:220px; height:56px; }
+  .pulse-line path{
+    fill:none;
+    stroke:var(--coral);
+    stroke-width:2.4;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray: 520;
+    stroke-dashoffset: 520;
+    animation: draw 3.4s ease-in-out infinite;
+  }
+  @keyframes draw{
+    0%{ stroke-dashoffset:520; }
+    45%{ stroke-dashoffset:0; }
+    100%{ stroke-dashoffset:-520; }
+  }
+
+  .legend{
+    display:flex; gap:18px; flex-wrap:wrap;
+    margin-top:22px;
+    font-size:0.82rem;
+    color:var(--muted);
+  }
+  .legend span{ display:inline-flex; align-items:center; gap:7px; }
+  .swatch{ width:9px; height:9px; border-radius:50%; display:inline-block; }
+
+  /* ---------- subject nav pills ---------- */
+  .subject-pills{
+    display:flex; gap:10px; flex-wrap:wrap;
+    padding: 8px 0 44px;
+  }
+  .pill{
+    display:flex; align-items:center; gap:9px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:10px 16px;
+    border-radius:999px;
+    text-decoration:none;
+    font-size:0.88rem;
+    font-weight:600;
+    transition: border-color .15s, transform .15s;
+  }
+  .pill:hover{ border-color:var(--teal); transform:translateY(-1px); }
+  .pill .ring{ width:16px; height:16px; }
+
+  /* ---------- subject sections ---------- */
+  .subject{
+    padding: 46px 0;
+    border-top: 1px solid var(--border);
+    scroll-margin-top: 84px;
+  }
+  .subject-head{
+    display:flex; align-items:flex-start; justify-content:space-between;
+    gap: 24px;
+    flex-wrap:wrap;
+    margin-bottom: 26px;
+  }
+  .subject-title{
+    display:flex; align-items:center; gap:14px;
+  }
+  .subject-icon{
+    width:46px; height:46px;
+    border-radius: 12px;
+    background: var(--teal-tint);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .subject-icon svg{ width:24px; height:24px; }
+  .subject-title h2{ margin:0; font-size:1.5rem; }
+  .subject-title p{ margin:2px 0 0; color:var(--muted); font-size:0.88rem; }
+
+  .progress-block{ min-width:200px; }
+  .progress-bar{
+    width:100%; height:8px;
+    background:var(--planned-tint);
+    border-radius:999px;
+    overflow:hidden;
+    margin-bottom:6px;
+  }
+  .progress-fill{
+    height:100%;
+    background: linear-gradient(90deg, var(--teal), var(--teal-dark));
+    border-radius:999px;
+  }
+  .progress-text{ font-size:0.8rem; color:var(--muted); text-align:right; }
+
+  .test-list{
+    display:flex; flex-direction:column;
+    border:1px solid var(--border);
+    border-radius: var(--radius);
+    overflow:hidden;
+    background:var(--surface);
+  }
+  .test-row{
+    display:flex; align-items:center; gap:16px;
+    padding: 15px 20px;
+    border-bottom:1px solid var(--border);
+  }
+  .test-row:last-child{ border-bottom:none; }
+  .test-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem;
+    color:var(--muted);
+    width:28px;
+    flex-shrink:0;
+  }
+  .test-name{ flex:1; font-size:0.93rem; min-width:180px; }
+  .status{
+    display:inline-flex; align-items:center; gap:7px;
+    font-size:0.78rem; font-weight:600;
+    padding: 5px 11px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .status .swatch{ width:7px; height:7px; }
+  .status.ready{ background:var(--teal-tint); color:var(--teal-dark); }
+  .status.yours{ background:var(--gold-tint); color:var(--gold); }
+  .status.planned{ background:var(--planned-tint); color:var(--muted); }
+
+  .btn{
+    text-decoration:none;
+    font-size:0.82rem;
+    font-weight:600;
+    padding: 8px 15px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .btn.open{
+    background:var(--teal);
+    color:#fff;
+    transition: background .15s;
+  }
+  .btn.open:hover{ background:var(--teal-dark); }
+  .btn.locked{
+    background:transparent;
+    color: var(--planned);
+    border:1px solid var(--border);
+    cursor:default;
+  }
+
+  @media (max-width: 620px){
+    .test-row{ flex-wrap:wrap; }
+    .test-name{ order:1; width:100%; }
+    .status{ order:3; }
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid var(--border);
+    padding: 40px 0 60px;
+    color:var(--muted);
+    font-size:0.86rem;
+  }
+  footer .foot-top{
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:12px;
+    margin-bottom: 14px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .pulse-line path{ animation:none; stroke-dashoffset:0; }
+    .eyebrow .dot{ animation:none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <div class="logo">
+      <svg class="logo-mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 12h4l2-7 3 14 2.5-9 1.5 4h7" stroke="#0E6E5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      MDCAT Prep Lab
+    </div>
+    <div class="navlinks">
+      <a href="#biology">Biology</a>
+      <a href="#chemistry">Chemistry</a>
+      <a href="#physics">Physics</a>
+      <a href="#english">English</a>
+      <a href="#reasoning">Reasoning</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> MDCAT 2026 · August 16</span>
+    <h1>Your prep's <em>vital signs</em>, charted chapter by chapter.</h1>
+    <p>500 mock-test MCQs across Biology, Chemistry, Physics, English and Logical Reasoning — mapped to the PMDC syllabus, ten tests deep in every subject.</p>
+
+    <div class="pulse-card">
+      <div class="pulse-stat">
+        <div class="num mono" id="readyCount">7/50</div>
+        <div class="label">tests built and ready to open</div>
+      </div>
+      <svg class="pulse-line" viewBox="0 0 500 56" preserveAspectRatio="none">
+        <path d="M0,28 L60,28 L80,8 L100,48 L120,28 L160,28 L180,14 L200,42 L220,28 L500,28"/>
+      </svg>
+      <div class="pulse-stat">
+        <div class="num mono" style="color:var(--teal)">5</div>
+        <div class="label">subjects, 10 tests each</div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--teal)"></span> Ready — open now</span>
+      <span><span class="swatch" style="background:var(--gold)"></span> Drafted by you</span>
+      <span><span class="swatch" style="background:var(--planned)"></span> Planned</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="subject-pills">
+    <a class="pill" href="#biology"><svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#DCE7E2" stroke-width="3"/><circle cx="12" cy="12" r="10" fill="none" stroke="#0E6E5C" stroke-width="3" stroke-dasharray="62.8" stroke-dashoffset="18.8" stroke-linecap="round" transform="rotate(-90 12 12)"/></svg> Biology · 7/10</a>
+    <a class="pill" href="#chemistry"><svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#DCE7E2" stroke-width="3"/></svg> Chemistry · 0/10</a>
+    <a class="pill" href="#physics"><svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#DCE7E2" stroke-width="3"/></svg> Physics · 0/10</a>
+    <a class="pill" href="#english"><svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#DCE7E2" stroke-width="3"/></svg> English · 0/10</a>
+    <a class="pill" href="#reasoning"><svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#DCE7E2" stroke-width="3"/></svg> Logical Reasoning · 0/10</a>
+  </div>
+
+  <div id="subjects"></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <span>Built for MDCAT aspirants preparing for August 16, 2026.</span>
+      <span class="mono">Updated as new tests go live</span>
+    </div>
+    <span>Each mock test is a flat text file in Ravilya quiz format — open it directly in the Ravilya app to run it as a timed test.</span>
+  </div>
+</footer>
+
+<script>
+const ICONS = {
+  biology: `<path d="M8 3c0 6 8 6 8 12s-8 6-8 12M16 3c0 6-8 6-8 12s8 6 8 12" stroke="#0E6E5C" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M8.6 8h6.8M8.2 12h7.6M8.2 16h7.6M8.6 20h6.8" stroke="#0E6E5C" stroke-width="1.3" stroke-linecap="round"/>`,
+  chemistry: `<path d="M9 3h6M10 3v6l-5.2 9A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-3L14 9V3" stroke="#0E6E5C" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"/><circle cx="10" cy="16" r="1" fill="#0E6E5C"/><circle cx="13.5" cy="17.5" r="1" fill="#0E6E5C"/><circle cx="12" cy="14" r="1" fill="#0E6E5C"/>`,
+  physics: `<circle cx="12" cy="12" r="1.8" fill="#0E6E5C"/><ellipse cx="12" cy="12" rx="9" ry="3.6" stroke="#0E6E5C" stroke-width="1.4" fill="none"/><ellipse cx="12" cy="12" rx="9" ry="3.6" stroke="#0E6E5C" stroke-width="1.4" fill="none" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" stroke="#0E6E5C" stroke-width="1.4" fill="none" transform="rotate(120 12 12)"/>`,
+  english: `<path d="M4 5.5c3-1.4 6-1.4 8 0v14c-2-1.4-5-1.4-8 0v-14Z" stroke="#0E6E5C" stroke-width="1.5" fill="none" stroke-linejoin="round"/><path d="M20 5.5c-3-1.4-6-1.4-8 0v14c2-1.4 5-1.4 8 0v-14Z" stroke="#0E6E5C" stroke-width="1.5" fill="none" stroke-linejoin="round"/>`,
+  reasoning: `<circle cx="6" cy="7" r="2.2" stroke="#0E6E5C" stroke-width="1.5" fill="none"/><circle cx="18" cy="7" r="2.2" stroke="#0E6E5C" stroke-width="1.5" fill="none"/><circle cx="12" cy="18" r="2.2" stroke="#0E6E5C" stroke-width="1.5" fill="none"/><path d="M7.8 8.3 10.5 16M16.2 8.3 13.5 16M8.2 7h7.6" stroke="#0E6E5C" stroke-width="1.3"/>`
+};
+
+const DATA = [
+  {
+    id: "biology", name: "Biology", tagline: "FSc Pre-Medical syllabus, 50 MCQs per test",
+    tests: [
+      { t: "Introduction to Biology + Biological Molecules", status: "ready", file: "Biology_Mock_Test_01.md" },
+      { t: "Enzymes + Bioenergetics", status: "ready", file: "Biology_Mock_Test_02.md" },
+      { t: "The Cell — Structure, Membrane, Organelles", status: "ready", file: "Biology_Mock_Test_03.md" },
+      { t: "Prokaryotae, Viruses, Protista, Fungi", status: "ready", file: "Biology_Mock_Test_04.md" },
+      { t: "Kingdom Plantae + Kingdom Animalia", status: "ready", file: "Biology_Mock_Test_05.md" },
+      { t: "Nutrition + Gaseous Exchange", status: "ready", file: "Biology_Mock_Test_06.md" },
+      { t: "Transport + Homeostasis", status: "ready", file: "Biology_Mock_Test_07.md" },
+      { t: "Support & Movement + Coordination & Control", status: "planned" },
+      { t: "Reproduction + Chromosomes/DNA + Cell Division", status: "planned" },
+      { t: "Genetics + Evolution + Biotechnology + Ecology", status: "planned" }
+    ]
+  },
+  {
+    id: "chemistry", name: "Chemistry", tagline: "Inorganic, physical & organic — full FSc range",
+    tests: [
+      { t: "Fundamental Concepts (Stoichiometry) + Atomic Structure", status: "planned" },
+      { t: "Chemical Bonding + Gases", status: "planned" },
+      { t: "Liquids & Solids + Thermochemistry", status: "planned" },
+      { t: "Chemical Equilibrium + Reaction Kinetics", status: "planned" },
+      { t: "Electrochemistry + s- and p-Block Elements", status: "planned" },
+      { t: "Periodic Classification/Periodicity + d- and f-Block Elements", status: "planned" },
+      { t: "Fundamentals of Organic Chemistry + Aliphatic Hydrocarbons", status: "planned" },
+      { t: "Aromatic Hydrocarbons + Alkyl Halides & Amines", status: "planned" },
+      { t: "Alcohols, Phenols, Ethers + Aldehydes, Ketones, Carboxylic Acids", status: "planned" },
+      { t: "Biochemistry + Cumulative Review", status: "planned" }
+    ]
+  },
+  {
+    id: "physics", name: "Physics", tagline: "Mechanics through electronics",
+    tests: [
+      { t: "Measurements & Vectors + Motion & Force", status: "yours" },
+      { t: "Work, Energy & Power + Rotational & Circular Motion", status: "planned" },
+      { t: "Properties of Matter/Fluids + Oscillations", status: "planned" },
+      { t: "Waves + Thermodynamics", status: "planned" },
+      { t: "Electrostatics + Current Electricity", status: "planned" },
+      { t: "Electromagnetism + EM Induction/AC Circuits", status: "planned" },
+      { t: "Physical Optics", status: "planned" },
+      { t: "Modern Physics", status: "planned" },
+      { t: "Nuclear Physics", status: "planned" },
+      { t: "Electronics + Cumulative Review", status: "planned" }
+    ]
+  },
+  {
+    id: "english", name: "English", tagline: "Grammar, vocabulary & comprehension",
+    tests: [
+      { t: "Parts of Speech + Sentence Structure", status: "yours" },
+      { t: "Tenses (all forms)", status: "planned" },
+      { t: "Active & Passive Voice", status: "planned" },
+      { t: "Narration (Direct/Indirect Speech)", status: "planned" },
+      { t: "Articles, Prepositions & Conjunctions", status: "planned" },
+      { t: "Vocabulary I — Synonyms & Antonyms", status: "planned" },
+      { t: "Vocabulary II — Idioms, Phrases & One-Word Substitution", status: "planned" },
+      { t: "Sentence Correction & Error Detection", status: "planned" },
+      { t: "Reading Comprehension", status: "planned" },
+      { t: "Cumulative Review", status: "planned" }
+    ]
+  },
+  {
+    id: "reasoning", name: "Logical Reasoning", tagline: "Pattern, verbal & analytical reasoning",
+    tests: [
+      { t: "Analogies + Classification (Odd One Out)", status: "planned" },
+      { t: "Series Completion + Coding-Decoding", status: "planned" },
+      { t: "Blood Relations + Direction Sense", status: "planned" },
+      { t: "Syllogisms & Logical Deduction + Statement-Conclusion/Assumption", status: "planned" },
+      { t: "Arithmetical Reasoning + Data Sufficiency", status: "planned" },
+      { t: "Analogies + Coding-Decoding (mixed repeat)", status: "planned" },
+      { t: "Series Completion + Blood Relations", status: "planned" },
+      { t: "Direction Sense + Syllogisms", status: "planned" },
+      { t: "Statement-Conclusion + Arithmetical Reasoning", status: "planned" },
+      { t: "Full Mixed Review (all topics)", status: "planned" }
+    ]
+  }
+];
+
+const STATUS_LABEL = { ready: "Ready", yours: "Drafted", planned: "Planned" };
+
+function renderSubject(subj){
+  const readyN = subj.tests.filter(t => t.status === "ready").length;
+  const pct = Math.round((readyN / subj.tests.length) * 100);
+
+  const rows = subj.tests.map((t, i) => {
+    const num = String(i+1).padStart(2,"0");
+    const badge = `<span class="status ${t.status}"><span class="swatch" style="background:currentColor"></span>${STATUS_LABEL[t.status]}</span>`;
+    const action = t.status === "ready"
+      ? `<a class="btn open" href="${t.file}" download>Open test</a>`
+      : `<span class="btn locked">${t.status === "yours" ? "In your notes" : "Coming soon"}</span>`;
+    return `<div class="test-row">
+      <span class="test-num mono">${num}</span>
+      <span class="test-name">${t.t}</span>
+      ${badge}
+      ${action}
+    </div>`;
+  }).join("");
+
+  return `
+  <section class="subject" id="${subj.id}">
+    <div class="subject-head">
+      <div class="subject-title">
+        <div class="subject-icon"><svg viewBox="0 0 24 24">${ICONS[subj.id]}</svg></div>
+        <div>
+          <h2>${subj.name}</h2>
+          <p>${subj.tagline}</p>
+        </div>
+      </div>
+      <div class="progress-block">
+        <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+        <div class="progress-text mono">${readyN}/10 ready</div>
+      </div>
+    </div>
+    <div class="test-list">${rows}</div>
+  </section>`;
+}
+
+document.getElementById("subjects").innerHTML = DATA.map(renderSubject).join("");
+
+const totalReady = DATA.reduce((sum, s) => sum + s.tests.filter(t => t.status === "ready").length, 0);
+const totalTests = DATA.reduce((sum, s) => sum + s.tests.length, 0);
+document.getElementById("readyCount").textContent = `${totalReady}/${totalTests}`;
+</script>
+
+</body>
+</html>
