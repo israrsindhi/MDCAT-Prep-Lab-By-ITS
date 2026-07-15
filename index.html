@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MDCAT Prep Lab — Chapter-wise Mock Tests</title>
+<title>MDCAT Prep Lab — 16-Day Mock Test Sprint</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -19,10 +19,13 @@
     --gold: #C98A2E;
     --gold-tint: #FBF0DC;
     --coral: #D8492A;
+    --coral-tint: #FBE6E0;
     --planned: #A9B8B3;
     --planned-tint: #EEF2F0;
     --live: #0E6E5C;
     --live-tint: #E4F1EC;
+    --off: #8E8398;
+    --off-tint: #EFEBF3;
     --radius: 14px;
     --shadow: 0 1px 2px rgba(20,37,33,0.04), 0 8px 24px rgba(20,37,33,0.05);
   }
@@ -75,6 +78,8 @@
     align-items:center;
     justify-content:space-between;
     height:64px;
+    flex-wrap:wrap;
+    gap: 6px;
   }
   .logo{
     display:flex;
@@ -137,11 +142,26 @@
     color:var(--teal);
   }
   .hero p{
-    max-width: 52ch;
+    max-width: 54ch;
     color:var(--muted);
     font-size:1.06rem;
-    margin: 0 0 36px;
+    margin: 0 0 28px;
   }
+
+  .exam-facts{
+    display:flex; gap:10px; flex-wrap:wrap;
+    margin-bottom: 32px;
+  }
+  .fact-chip{
+    display:flex; align-items:baseline; gap:6px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:8px 13px;
+    border-radius:999px;
+    font-size:0.8rem;
+  }
+  .fact-chip b{ font-family:'Space Grotesk', sans-serif; color:var(--teal-dark); font-size:0.92rem; }
+  .fact-chip span{ color:var(--muted); }
 
   .pulse-card{
     background:var(--surface);
@@ -210,6 +230,104 @@
   }
   .pill:hover{ border-color:var(--teal); transform:translateY(-1px); }
   .pill .ring{ width:16px; height:16px; }
+
+  /* ---------- section shell ---------- */
+  .section-block{
+    padding: 46px 0;
+    border-top: 1px solid var(--border);
+    scroll-margin-top: 84px;
+  }
+  .section-head{
+    margin-bottom: 26px;
+    max-width: 62ch;
+  }
+  .section-head .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--teal-dark);
+    margin-bottom:8px;
+    display:block;
+  }
+  .section-head h2{ margin:0 0 8px; font-size:1.6rem; }
+  .section-head p{ margin:0; color:var(--muted); font-size:0.94rem; }
+
+  /* ---------- day schedule ---------- */
+  .day-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 14px;
+  }
+  .day-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 17px;
+    display:flex;
+    flex-direction:column;
+    gap: 11px;
+    position:relative;
+  }
+  .day-card.is-today{
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px var(--teal-tint);
+  }
+  .day-card.is-off{
+    background: var(--off-tint);
+  }
+  .day-card.is-past:not(.is-today){ opacity: 0.86; }
+  .day-head{
+    display:flex; align-items:center; justify-content:space-between;
+    gap: 8px;
+  }
+  .day-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--muted);
+    background:var(--planned-tint);
+    padding:3px 8px;
+    border-radius:999px;
+  }
+  .day-today-badge{
+    font-size:0.68rem;
+    font-weight:700;
+    color:#fff;
+    background:var(--coral);
+    padding:3px 8px;
+    border-radius:999px;
+    letter-spacing:0.02em;
+  }
+  .day-date{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.05rem; }
+  .day-name{ font-size:0.78rem; color:var(--muted); margin-top:-6px; }
+  .day-off-label{
+    display:flex; align-items:center; gap:8px;
+    color: var(--off);
+    font-weight:600;
+    font-size:0.92rem;
+    padding: 10px 0 2px;
+  }
+  .day-tests{ display:flex; flex-direction:column; gap:6px; }
+  .day-test{
+    display:flex; align-items:center; gap:8px;
+    font-size:0.82rem;
+    padding: 6px 9px;
+    border-radius:9px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+  }
+  .day-test .dot{ width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+  .day-test.status-live{ border-color: var(--teal); }
+  .day-test.status-live .dot{ background:var(--live); }
+  .day-test.status-planned .dot{ background:var(--planned); }
+  a.day-test{ text-decoration:none; color:var(--text); transition: background .15s; }
+  a.day-test:hover{ background: var(--teal-tint); }
+  .day-note{
+    font-size:0.76rem;
+    color:var(--gold);
+    font-weight:600;
+    padding-top: 2px;
+  }
 
   /* ---------- subject sections ---------- */
   .subject{
@@ -313,6 +431,72 @@
     .status{ order:3; }
   }
 
+  /* ---------- prep toolkit ---------- */
+  .weight-table{
+    display:flex; flex-direction:column; gap:12px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    margin-bottom: 20px;
+  }
+  .weight-row{ display:flex; align-items:center; gap:14px; }
+  .weight-row .wname{ width:118px; flex-shrink:0; font-size:0.86rem; font-weight:600; }
+  .weight-bar-track{ flex:1; height:9px; background:var(--planned-tint); border-radius:999px; overflow:hidden; }
+  .weight-bar-fill{ height:100%; border-radius:999px; background: linear-gradient(90deg, var(--teal), var(--teal-dark)); }
+  .weight-row .wnum{ width:78px; flex-shrink:0; text-align:right; font-size:0.8rem; color:var(--muted); }
+
+  .prep-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 14px;
+  }
+  .prep-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .prep-card h3{
+    margin: 0 0 10px;
+    font-size: 1rem;
+    display:flex; align-items:center; gap:9px;
+  }
+  .prep-card h3 .chip-dot{ width:9px; height:9px; border-radius:3px; background:var(--teal); flex-shrink:0; }
+  .prep-card ul{ margin:0; padding-left: 18px; font-size:0.86rem; color:var(--muted); }
+  .prep-card li{ margin-bottom:6px; }
+  .prep-card li:last-child{ margin-bottom:0; }
+
+  .strategy-list{
+    display:flex; flex-direction:column;
+    border:1px solid var(--border);
+    border-radius: var(--radius);
+    overflow:hidden;
+    background:var(--surface);
+    margin-top: 18px;
+  }
+  .strategy-row{
+    display:flex; gap: 14px;
+    padding: 15px 20px;
+    border-bottom:1px solid var(--border);
+    font-size:0.88rem;
+  }
+  .strategy-row:last-child{ border-bottom:none; }
+  .strategy-row .snum{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--teal-dark);
+    font-weight:700;
+    flex-shrink:0;
+  }
+  .strategy-row .stext b{ display:block; margin-bottom:2px; }
+  .strategy-row .stext span{ color:var(--muted); }
+
+  .fine-print{
+    margin-top:16px;
+    font-size:0.78rem;
+    color:var(--muted);
+  }
+
   /* ---------- footer ---------- */
   footer{
     border-top:1px solid var(--border);
@@ -320,11 +504,41 @@
     color:var(--muted);
     font-size:0.86rem;
   }
-  footer .foot-top{
+  .foot-top{
     display:flex; justify-content:space-between; align-items:center;
-    flex-wrap:wrap; gap:12px;
-    margin-bottom: 14px;
+    flex-wrap:wrap; gap:16px;
+    margin-bottom: 22px;
   }
+  .foot-cols{
+    display:flex; justify-content:space-between;
+    flex-wrap:wrap;
+    gap: 26px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 18px;
+  }
+  .foot-credit .foot-brand{
+    display:flex; align-items:center; gap:9px;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    color:var(--text);
+    font-size:1rem;
+    margin-bottom:8px;
+  }
+  .foot-credit p{ margin:0; max-width: 36ch; }
+  .social-row{ display:flex; gap:10px; }
+  .social-link{
+    width:36px; height:36px;
+    border-radius:50%;
+    background:var(--surface);
+    border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center;
+    text-decoration:none;
+    transition: border-color .15s, transform .15s;
+  }
+  .social-link:hover{ border-color:var(--teal); transform:translateY(-2px); }
+  .social-link svg{ width:16px; height:16px; }
+  .social-label{ font-size:0.78rem; color:var(--muted); margin-bottom:10px; }
 
   @media (prefers-reduced-motion: reduce){
     .pulse-line path{ animation:none; stroke-dashoffset:0; }
@@ -343,20 +557,26 @@
       MDCAT Prep Lab
     </div>
     <div class="navlinks">
+      <a href="#schedule">16-Day Sprint</a>
       <a href="#biology">Biology</a>
       <a href="#chemistry">Chemistry</a>
       <a href="#physics">Physics</a>
       <a href="#english">English</a>
       <a href="#reasoning">Reasoning</a>
+      <a href="#prep-toolkit">Prep Toolkit</a>
     </div>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow"><span class="dot"></span> MDCAT 2026 · August 16</span>
-    <h1>Your prep's <em>vital signs</em>, charted chapter by chapter.</h1>
-    <p>500 mock-test MCQs across Biology, Chemistry, Physics, English and Logical Reasoning — mapped to the PMDC syllabus, ten tests deep in every subject.</p>
+    <span class="eyebrow"><span class="dot"></span> MDCAT 2026 · Sunday, 16 August</span>
+    <h1>Your prep's <em>vital signs</em>, charted day by day.</h1>
+    <p>A 16-day mock-test sprint (15–30 July) across Biology, Chemistry, Physics, English and Logical Reasoning — 500 MCQs mapped to the PMDC syllabus, ten full tests deep in every subject.</p>
+
+    <div class="exam-facts" id="examFacts">
+      <!-- filled by script -->
+    </div>
 
     <div class="pulse-card">
       <div class="pulse-stat">
@@ -367,8 +587,8 @@
         <path d="M0,28 L60,28 L80,8 L100,48 L120,28 L160,28 L180,14 L200,42 L220,28 L500,28"/>
       </svg>
       <div class="pulse-stat">
-        <div class="num mono" style="color:var(--teal)">5</div>
-        <div class="label">subjects, 10 tests each</div>
+        <div class="num mono" style="color:var(--teal)" id="daysLeft">—</div>
+        <div class="label">days until MDCAT 2026</div>
       </div>
     </div>
 
@@ -376,33 +596,138 @@
       <span><span class="swatch" style="background:var(--live)"></span> Live — open now</span>
       <span><span class="swatch" style="background:var(--gold)"></span> Drafted by you</span>
       <span><span class="swatch" style="background:var(--planned)"></span> Planned</span>
+      <span><span class="swatch" style="background:var(--off)"></span> Rest day</span>
     </div>
   </div>
 </header>
 
 <main class="wrap">
-  <div class="subject-pills">
-    <a class="pill" href="#biology"><svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#DCE7E2" stroke-width="3"/><circle cx="12" cy="12" r="10" fill="none" stroke="#0E6E5C" stroke-width="3" stroke-dasharray="62.8" stroke-dashoffset="18.8" stroke-linecap="round" transform="rotate(-90 12 12)"/></svg> Biology · 1/10</a>
-    <a class="pill" href="#chemistry"><svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#DCE7E2" stroke-width="3"/></svg> Chemistry · 0/10</a>
-    <a class="pill" href="#physics"><svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#DCE7E2" stroke-width="3"/><circle cx="12" cy="12" r="10" fill="none" stroke="#0E6E5C" stroke-width="3" stroke-dasharray="62.8" stroke-dashoffset="18.8" stroke-linecap="round" transform="rotate(-90 12 12)"/></svg> Physics · 1/10</a>
-    <a class="pill" href="#english"><svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#DCE7E2" stroke-width="3"/><circle cx="12" cy="12" r="10" fill="none" stroke="#0E6E5C" stroke-width="3" stroke-dasharray="62.8" stroke-dashoffset="18.8" stroke-linecap="round" transform="rotate(-90 12 12)"/></svg> English · 1/10</a>
-    <a class="pill" href="#reasoning"><svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#DCE7E2" stroke-width="3"/></svg> Logical Reasoning · 0/10</a>
-  </div>
+  <div class="subject-pills" id="subjectPills"></div>
+
+  <section class="section-block" id="schedule">
+    <div class="section-head">
+      <span class="kicker">15 Jul → 30 Jul · 16 days</span>
+      <h2>The Sprint Calendar</h2>
+      <p>Three to four tests a day, two Sundays off to catch up and rest, and the last day reserved purely for revision and error analysis. Today's card is outlined in teal.</p>
+    </div>
+    <div class="day-grid" id="dayGrid"></div>
+  </section>
 
   <div id="subjects"></div>
+
+  <section class="section-block" id="prep-toolkit">
+    <div class="section-head">
+      <span class="kicker">Preparation toolkit</span>
+      <h2>How the paper is actually weighted</h2>
+      <p>MDCAT 2026 is 180 MCQs, paper-based, marked +1 for every correct answer with no negative marking — so nothing is ever left blank. Here's where the marks live, and how past high-scorers have spent their study hours.</p>
+    </div>
+
+    <div class="weight-table" id="weightTable"></div>
+
+    <div class="prep-grid">
+      <div class="prep-card">
+        <h3><span class="chip-dot" style="background:var(--teal)"></span>Biology · high-yield</h3>
+        <ul>
+          <li>Genetics &amp; Evolution</li>
+          <li>Coordination &amp; Control</li>
+          <li>Reproduction</li>
+          <li>Bioenergetics</li>
+          <li>Cell Biology &amp; Cell Division</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <h3><span class="chip-dot" style="background:var(--gold)"></span>Chemistry · high-yield</h3>
+        <ul>
+          <li>Organic reaction mechanisms</li>
+          <li>Chemical equilibrium &amp; kinetics</li>
+          <li>s-, p- and d-Block trends</li>
+          <li>Electrochemistry</li>
+          <li>Biochemistry basics</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <h3><span class="chip-dot" style="background:var(--coral)"></span>Physics · high-yield</h3>
+        <ul>
+          <li>Mechanics &amp; rotational motion</li>
+          <li>Electromagnetism &amp; EM induction</li>
+          <li>Modern &amp; nuclear physics</li>
+          <li>Current electricity</li>
+          <li>Waves &amp; oscillations</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <h3><span class="chip-dot" style="background:var(--off)"></span>English &amp; Reasoning</h3>
+        <ul>
+          <li>Only 18 marks combined — but pure practice, no memorising</li>
+          <li>Drill grammar &amp; vocabulary daily in short bursts</li>
+          <li>Time-box logical reasoning puzzles to 60–90 sec each</li>
+          <li>Never skip these two on any test day</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="strategy-list">
+      <div class="strategy-row">
+        <span class="snum mono">01</span>
+        <div class="stext"><b>Attempt every single MCQ.</b><span>There's no negative marking, so a blank answer and a wrong guess score the same — zero. An educated guess can only help.</span></div>
+      </div>
+      <div class="strategy-row">
+        <span class="snum mono">02</span>
+        <div class="stext"><b>Weight your hours like the paper does.</b><span>Biology and Chemistry together carry 70% of the marks — start revision there, then layer in Physics, English and Reasoning.</span></div>
+      </div>
+      <div class="strategy-row">
+        <span class="snum mono">03</span>
+        <div class="stext"><b>Simulate real test conditions.</b><span>Time each mock, sit it in one block without pausing, and mark it with a pencil-and-OMR mindset — no calculators, phones, or smart watches.</span></div>
+      </div>
+      <div class="strategy-row">
+        <span class="snum mono">04</span>
+        <div class="stext"><b>Review every wrong answer the same day.</b><span>A mock test is only worth as much as the error log you pull out of it — note the concept, not just the question.</span></div>
+      </div>
+      <div class="strategy-row">
+        <span class="snum mono">05</span>
+        <div class="stext"><b>Use the two Sundays to catch up, not coast.</b><span>19 and 26 July are built-in slack days — reserved for whichever test slipped, plus light revision.</span></div>
+      </div>
+    </div>
+
+    <p class="fine-print">Figures above reflect the PMDC Uniform Curriculum as publicly confirmed for MDCAT 2026 (180 MCQs, no negative marking). Always cross-check the final syllabus, paper pattern and test date against the official PMDC notice at pmdc.pk before finalising your plan.</p>
+  </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <div class="foot-top">
-      <span>Built for MDCAT aspirants preparing for August 16, 2026.</span>
-      <span class="mono">Updated as new tests go live</span>
+    <div class="foot-cols">
+      <div class="foot-credit">
+        <div class="foot-brand">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M2 12h4l2-7 3 14 2.5-9 1.5 4h7" stroke="#0E6E5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          MDCAT Prep Lab
+        </div>
+        <p>Built by Indus Academy & Testing Service — free to use, share with your study group.</p>
+      </div>
+      <div>
+        <div class="social-label">Follow along / get updates</div>
+        <div class="social-row">
+          <a class="social-link" href="https://chat.whatsapp.com/KiR98VFDnkXLHoB4Nu2Fv2?s=sw&p=a&ilr=0" aria-label="WhatsApp channel" title="WhatsApp channel — add your link">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M20 4A10 10 0 0 0 4.4 16.9L3 21l4.2-1.4A10 10 0 1 0 20 4Z" stroke="#0E6E5C" stroke-width="1.6" fill="none"/><path d="M8.5 8.6c.2-.8 1-1.2 1.6-.8.4.3.7 1.2 1 1.8.2.4.1.7-.1 1l-.6.6c-.2.2-.2.4-.1.7.4.9 1.6 2.1 2.5 2.5.3.1.5.1.7-.1l.6-.6c.3-.2.6-.3 1-.1.6.3 1.5.6 1.8 1 .4.6 0 1.4-.8 1.6-1.2.4-2.7 0-4.6-1.9-1.9-1.9-2.3-3.4-1.9-4.7Z" fill="#0E6E5C"/></svg>
+          </a>
+          <a class="social-link" href="#" aria-label="Instagram" title="Instagram — add your link">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="#0E6E5C" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="#0E6E5C" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="#0E6E5C"/></svg>
+          </a>
+          <a class="social-link" href="http://youtube.com/@iats_sindh" aria-label="YouTube" title="YouTube — add your link">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="2.5" y="6" width="19" height="12" rx="3.5" stroke="#0E6E5C" stroke-width="1.6"/><path d="M10.5 9.5v5l4.3-2.5-4.3-2.5Z" fill="#0E6E5C"/></svg>
+          </a>
+          <a class="social-link" href="https://facebook.com/industestingservice" aria-label="Facebook group" title="Facebook group — add your link">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#0E6E5C" stroke-width="1.6"/><path d="M13.6 8.7h1.4V6.4h-1.7c-1.7 0-2.7 1-2.7 2.7v1.4H9.2v2.3h1.4V19h2.3v-6.2h1.7l.3-2.3h-2V9.4c0-.5.2-.7.7-.7Z" fill="#0E6E5C"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
-    <span>Each mock test is a flat text file in Ravilya quiz format — open it directly in the Ravilya app to run it as a timed test.</span>
-  </div>
-</footer>
+    <div class="foot-top">
+      <span>Built for MDCAT aspirants preparing for Sunday, 16 August 2026.</span>
+      <span class="mono">Updated as new tests go live</span>
+   </footer>
 
 <script>
+/* ============ SUBJECT + TEST DATA ============ */
 const ICONS = {
   biology: `<path d="M8 3c0 6 8 6 8 12s-8 6-8 12M16 3c0 6-8 6-8 12s8 6 8 12" stroke="#0E6E5C" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M8.6 8h6.8M8.2 12h7.6M8.2 16h7.6M8.6 20h6.8" stroke="#0E6E5C" stroke-width="1.3" stroke-linecap="round"/>`,
   chemistry: `<path d="M9 3h6M10 3v6l-5.2 9A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-3L14 9V3" stroke="#0E6E5C" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"/><circle cx="10" cy="16" r="1" fill="#0E6E5C"/><circle cx="13.5" cy="17.5" r="1" fill="#0E6E5C"/><circle cx="12" cy="14" r="1" fill="#0E6E5C"/>`,
@@ -490,7 +815,85 @@ const DATA = [
 ];
 
 const STATUS_LABEL = { live: "Live", ready: "Ready", yours: "Drafted", planned: "Planned" };
+const SUBJECT_LABEL = { biology: "Biology", chemistry: "Chemistry", physics: "Physics", english: "English", reasoning: "LR" };
 
+function getTest(subjectId, num){
+  const subj = DATA.find(s => s.id === subjectId);
+  return subj ? subj.tests[num - 1] : null;
+}
+
+/* ============ 16-DAY SCHEDULE ============ */
+const SCHEDULE = [
+  { date: "2026-07-15", day: "Wednesday", off: false, tests: [["biology",1],["physics",1],["english",1]] },
+  { date: "2026-07-16", day: "Thursday",  off: false, tests: [["chemistry",1],["reasoning",1],["biology",2]] },
+  { date: "2026-07-17", day: "Friday",    off: false, tests: [["physics",2],["english",2],["chemistry",2]] },
+  { date: "2026-07-18", day: "Saturday",  off: false, tests: [["biology",3],["reasoning",2],["physics",3]] },
+  { date: "2026-07-19", day: "Sunday",    off: true,  tests: [] },
+  { date: "2026-07-20", day: "Monday",    off: false, tests: [["chemistry",3],["english",3],["biology",4],["physics",4]] },
+  { date: "2026-07-21", day: "Tuesday",   off: false, tests: [["reasoning",3],["chemistry",4],["biology",5],["english",4]] },
+  { date: "2026-07-22", day: "Wednesday", off: false, tests: [["physics",5],["reasoning",4],["chemistry",5],["biology",6]] },
+  { date: "2026-07-23", day: "Thursday",  off: false, tests: [["english",5],["physics",6],["biology",7],["chemistry",6]] },
+  { date: "2026-07-24", day: "Friday",    off: false, tests: [["reasoning",5],["english",6],["physics",7],["biology",8]] },
+  { date: "2026-07-25", day: "Saturday",  off: false, tests: [["chemistry",7],["reasoning",6],["english",7],["biology",9]] },
+  { date: "2026-07-26", day: "Sunday",    off: true,  tests: [] },
+  { date: "2026-07-27", day: "Monday",    off: false, tests: [["physics",8],["chemistry",8],["english",8],["reasoning",7]] },
+  { date: "2026-07-28", day: "Tuesday",   off: false, tests: [["biology",10],["physics",9],["chemistry",9],["english",9]] },
+  { date: "2026-07-29", day: "Wednesday", off: false, tests: [["reasoning",8],["physics",10],["chemistry",10],["english",10]] },
+  { date: "2026-07-30", day: "Thursday",  off: false, tests: [["reasoning",9],["reasoning",10]], note: "+ Full revision & error analysis day" }
+];
+
+function fmtDate(iso){
+  const d = new Date(iso + "T00:00:00");
+  return d.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+}
+function dateOnly(d){ return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+
+function renderDayCard(entry, idx){
+  const cardDate = dateOnly(new Date(entry.date + "T00:00:00"));
+  const today = dateOnly(new Date());
+  const isToday = cardDate.getTime() === today.getTime();
+  const isPast = cardDate.getTime() < today.getTime();
+  const classes = ["day-card"];
+  if (isToday) classes.push("is-today");
+  if (entry.off) classes.push("is-off");
+  if (isPast) classes.push("is-past");
+
+  if (entry.off){
+    return `<div class="${classes.join(' ')}">
+      <div class="day-head">
+        <span class="day-num mono">DAY ${idx+1}</span>
+        ${isToday ? '<span class="day-today-badge">TODAY</span>' : ''}
+      </div>
+      <div class="day-date">${fmtDate(entry.date)}</div>
+      <div class="day-name">${entry.day}</div>
+      <div class="day-off-label">☕ Rest day — catch up or revise</div>
+    </div>`;
+  }
+
+  const rows = entry.tests.map(([subjId, num]) => {
+    const test = getTest(subjId, num);
+    const label = `${SUBJECT_LABEL[subjId]} ${num}`;
+    if (test && test.status === "live" && test.link){
+      return `<a class="day-test status-live" href="${test.link}" target="_blank"><span class="dot"></span>${label} — open</a>`;
+    }
+    return `<div class="day-test status-planned"><span class="dot"></span>${label}</div>`;
+  }).join("");
+
+  return `<div class="${classes.join(' ')}">
+    <div class="day-head">
+      <span class="day-num mono">DAY ${idx+1}</span>
+      ${isToday ? '<span class="day-today-badge">TODAY</span>' : ''}
+    </div>
+    <div class="day-date">${fmtDate(entry.date)}</div>
+    <div class="day-name">${entry.day}</div>
+    <div class="day-tests">${rows}</div>
+    ${entry.note ? `<div class="day-note">${entry.note}</div>` : ''}
+  </div>`;
+}
+
+document.getElementById("dayGrid").innerHTML = SCHEDULE.map(renderDayCard).join("");
+
+/* ============ SUBJECT SECTIONS ============ */
 function renderSubject(subj){
   const liveN = subj.tests.filter(t => t.status === "live" || t.status === "ready").length;
   const pct = Math.round((liveN / subj.tests.length) * 100);
@@ -532,9 +935,51 @@ function renderSubject(subj){
 
 document.getElementById("subjects").innerHTML = DATA.map(renderSubject).join("");
 
+/* ============ SUBJECT PILLS (built from live DATA, no hardcoded counts) ============ */
+function ringSvg(pct){
+  const r = 10, c = 2 * Math.PI * r;
+  const offset = c - (pct/100) * c;
+  return `<svg class="ring" viewBox="0 0 24 24"><circle cx="12" cy="12" r="${r}" fill="none" stroke="#DCE7E2" stroke-width="3"/>${pct > 0 ? `<circle cx="12" cy="12" r="${r}" fill="none" stroke="#0E6E5C" stroke-width="3" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${offset.toFixed(1)}" stroke-linecap="round" transform="rotate(-90 12 12)"/>` : ''}</svg>`;
+}
+document.getElementById("subjectPills").innerHTML = DATA.map(subj => {
+  const liveN = subj.tests.filter(t => t.status === "live" || t.status === "ready").length;
+  const pct = Math.round((liveN / subj.tests.length) * 100);
+  return `<a class="pill" href="#${subj.id}">${ringSvg(pct)} ${subj.name} · ${liveN}/10</a>`;
+}).join("");
+
+/* ============ HERO STATS ============ */
 const totalLive = DATA.reduce((sum, s) => sum + s.tests.filter(t => t.status === "live" || t.status === "ready").length, 0);
 const totalTests = DATA.reduce((sum, s) => sum + s.tests.length, 0);
 document.getElementById("readyCount").textContent = `${totalLive}/${totalTests}`;
+
+const examDate = new Date("2026-08-16T10:00:00");
+const now = new Date();
+const msLeft = examDate - now;
+const daysLeft = Math.max(0, Math.ceil(msLeft / (1000*60*60*24)));
+document.getElementById("daysLeft").textContent = daysLeft;
+
+document.getElementById("examFacts").innerHTML = [
+  { b: "180", s: "total MCQs" },
+  { b: "0", s: "negative marking" },
+  { b: "45/25/20/5/5", s: "Bio/Chem/Phy/Eng/LR weightage" },
+  { b: "5", s: "subjects, 10 tests each" }
+].map(f => `<div class="fact-chip"><b>${f.b}</b><span>${f.s}</span></div>`).join("");
+
+/* ============ PREP TOOLKIT — WEIGHTAGE TABLE ============ */
+const WEIGHTS = [
+  { name: "Biology", pct: 45 },
+  { name: "Chemistry", pct: 25 },
+  { name: "Physics", pct: 20 },
+  { name: "English", pct: 5 },
+  { name: "Logical Reasoning", pct: 5 }
+];
+document.getElementById("weightTable").innerHTML = WEIGHTS.map(w => `
+  <div class="weight-row">
+    <span class="wname">${w.name}</span>
+    <div class="weight-bar-track"><div class="weight-bar-fill" style="width:${w.pct}%"></div></div>
+    <span class="wnum mono">${w.pct}%</span>
+  </div>
+`).join("");
 </script>
 
 </body>
