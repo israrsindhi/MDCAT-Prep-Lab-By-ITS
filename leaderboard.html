@@ -171,6 +171,13 @@ footer{border-top:1px solid var(--border);padding:34px 0 50px;color:var(--muted)
       <a class="logo" href="index.html" style="color:var(--text)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M2 12h4l2-7 3 14 2.5-9 1.5 4h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> MDCAT Prep Lab</a>
       <div class="navlinks"><a class="" href="index.html">Home</a><a class="" href="biology.html">Biology</a><a class="" href="chemistry.html">Chemistry</a><a class="" href="physics.html">Physics</a><a class="" href="english.html">English</a><a class="" href="reasoning.html">Reasoning</a><a class="current" href="leaderboard.html">Leaderboard</a></div>
     </div></nav>
+<header class="hero wrap">
+  <span class="eyebrow">Class Leaderboard</span>
+  <h1>Scores load from JSON. Ranked automatically.</h1>
+  <p class="lb-intro">The leaderboard is driven entirely by a JSON list of results (student code, subject, test, score %) &mdash; no manual entry form. Edit <code class="mono">leaderboard-data.json</code>, paste JSON into the box below, or upload a file, and the board recalculates every student's average rating out of 10 and ranks them instantly.</p>
+
+  
+</header>
 
 <main class="wrap">
   <section class="section-block" style="border-top:none;padding-top:0;">
@@ -802,11 +809,16 @@ footer{border-top:1px solid var(--border);padding:34px 0 50px;color:var(--muted)
     return true;
   }
 
-  var box = document.getElementById('lbJsonBox');
-  var stored = loadStored();
-  currentData = stored || SAMPLE_DATA;
-  box.value = JSON.stringify(currentData, null, 2);
-  render();
+fetch('leaderboard-data.json')
+  .then(r => r.json())
+  .then(data => {
+      currentData = data;
+      render();
+  })
+  .catch(() => {
+      currentData = SAMPLE_DATA;
+      render();
+  });
 
   document.getElementById('lbLoadBtn').addEventListener('click', function(){
     applyJsonText(box.value, true);
