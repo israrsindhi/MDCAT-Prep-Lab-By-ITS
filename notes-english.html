@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Notes · MDCAT Prep Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg: #F5F8F6; --surface: #FFFFFF; --border: #DCE7E2; --text: #142521; --muted: #4B5F5A;
+  --teal: #0E6E5C; --teal-dark: #0A4F42; --teal-tint: #E4F1EC;
+  --gold: #C98A2E; --gold-tint: #FBF0DC;
+  --coral: #D8492A; --coral-tint: #FBE6E0;
+  --purple: #8E6FA8; --purple-tint: #F1EBF6;
+  --blue: #2F6FA8; --blue-tint: #E9F1F8;
+  --planned: #A9B8B3; --planned-tint: #EEF2F0;
+  --accent: #8E6FA8; --accent-tint: #F1EBF6; --accent-dark: #5E4680;
+  --radius: 14px; --shadow: 0 1px 2px rgba(20,37,33,0.04), 0 8px 24px rgba(20,37,33,0.05);
+}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55;}
+h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.01em;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+a{color:inherit;} :focus-visible{outline:2.5px solid var(--accent);outline-offset:2px;border-radius:4px;}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px;}
+.topnav{position:sticky;top:0;z-index:20;background:rgba(245,248,246,0.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
+.topnav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;flex-wrap:wrap;gap:6px;}
+.logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:1.02rem;text-decoration:none;}
+.navlinks{display:flex;gap:6px;flex-wrap:wrap;}
+.navlinks a{text-decoration:none;font-size:0.85rem;font-weight:600;color:var(--muted);padding:8px 14px;border-radius:999px;transition:background .15s,color .15s;}
+.navlinks a:hover, .navlinks a.current{background:var(--accent-tint);color:var(--accent-dark);}
+.hero{padding:48px 0 34px;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:0.76rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent-dark);background:var(--accent-tint);padding:6px 12px;border-radius:999px;margin-bottom:18px;}
+.hero h1{font-size:clamp(1.9rem,4.4vw,2.9rem);font-weight:700;margin:0 0 14px;max-width:22ch;}
+.hero p{max-width:60ch;color:var(--muted);font-size:1.02rem;margin:0 0 8px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:0.84rem;font-weight:600;color:var(--muted);text-decoration:none;margin-bottom:18px;}
+.back-link:hover{color:var(--accent-dark);}
+.section-block{padding:36px 0;border-top:1px solid var(--border);scroll-margin-top:84px;}
+.section-head{margin-bottom:22px;max-width:66ch;}
+.section-head .kicker{font-family:'IBM Plex Mono',monospace;font-size:0.75rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent-dark);margin-bottom:8px;display:block;}
+.section-head h2{margin:0 0 8px;font-size:1.45rem;}
+.section-head p{margin:0;color:var(--muted);font-size:0.93rem;}
+footer{border-top:1px solid var(--border);padding:34px 0 50px;color:var(--muted);font-size:0.84rem;}
+.foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center;}
+.progress-block{min-width:200px;}
+.progress-bar{width:100%;height:8px;background:var(--planned-tint);border-radius:999px;overflow:hidden;margin-bottom:6px;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-dark));border-radius:999px;transition:width .25s ease;}
+.progress-text{font-size:0.8rem;color:var(--muted);text-align:right;}
+.subject-head{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:22px;}
+.subject-title{display:flex;align-items:center;gap:14px;}
+.subject-icon{width:46px;height:46px;border-radius:12px;background:var(--accent-tint);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.subject-icon svg{width:24px;height:24px;}
+.subject-title h1{margin:0;font-size:1.5rem;}
+.subject-title p{margin:2px 0 0;color:var(--muted);font-size:0.88rem;}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;align-items:center;justify-content:space-between;}
+.btn{text-decoration:none;font-size:0.82rem;font-weight:600;padding:9px 16px;border-radius:999px;white-space:nowrap;display:inline-flex;align-items:center;gap:7px;border:1px solid transparent;cursor:pointer;font-family:inherit;}
+.btn.primary{background:var(--accent);color:#fff;transition:background .15s;}
+.btn.primary:hover{background:var(--accent-dark);}
+.btn.ghost{background:var(--surface);color:var(--text);border-color:var(--border);transition:border-color .15s;}
+.btn.ghost:hover{border-color:var(--accent);}
+.btn.locked{background:transparent;color:var(--planned);border:1px solid var(--border);cursor:default;}
+.test-list{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface);}
+.test-row{display:flex;align-items:center;gap:16px;padding:15px 20px;border-bottom:1px solid var(--border);transition:background .15s;}
+.test-row:last-child{border-bottom:none;}
+.test-row.is-done{background:var(--accent-tint);}
+.test-num{font-family:'IBM Plex Mono',monospace;font-size:0.82rem;color:var(--muted);width:26px;flex-shrink:0;}
+.test-name{flex:1;font-size:0.93rem;min-width:170px;}
+.status{display:inline-flex;align-items:center;gap:7px;font-size:0.78rem;font-weight:600;padding:5px 11px;border-radius:999px;white-space:nowrap;}
+.status .swatch{width:7px;height:7px;border-radius:50%;display:inline-block;}
+.status.live{background:var(--accent-tint);color:var(--accent-dark);}
+.status.planned{background:var(--planned-tint);color:var(--muted);}
+.mark-check{display:inline-flex;align-items:center;gap:7px;font-size:0.78rem;font-weight:600;color:var(--muted);cursor:pointer;user-select:none;padding:5px 10px;border-radius:999px;border:1px solid var(--border);transition:border-color .15s,color .15s;}
+.mark-check input{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
+.mark-check.checked{border-color:var(--accent);color:var(--accent-dark);}
+@media (max-width:640px){.test-row{flex-wrap:wrap;}.test-name{order:1;width:100%;}}
+.notes-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin-bottom:16px;}
+.notes-card h3{margin:0 0 4px;font-size:1.1rem;display:flex;align-items:center;gap:10px;}
+.notes-card .tag{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;letter-spacing:0.04em;text-transform:uppercase;background:var(--accent-tint);color:var(--accent-dark);padding:3px 9px;border-radius:999px;}
+.notes-card ul{margin:10px 0 0;padding-left:20px;font-size:0.9rem;color:var(--text);}
+.notes-card li{margin-bottom:7px;}
+.notes-card li:last-child{margin-bottom:0;}
+.notes-card .sub{color:var(--muted);font-size:0.86rem;margin-top:8px;}
+.tip{display:flex;gap:10px;background:var(--gold-tint);border:1px solid #EED8AE;border-radius:12px;padding:13px 16px;font-size:0.85rem;color:#7A5518;margin-top:10px;}
+.tip b{color:#5E4212;}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+.toc a{text-decoration:none;font-size:0.82rem;font-weight:600;color:var(--accent-dark);background:var(--accent-tint);padding:7px 13px;border-radius:999px;}
+.toc a:hover{background:var(--accent);color:#fff;}
+
+/* ---------- leaderboard ---------- */
+.lb-form{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin-bottom:24px;}
+.lb-form h3{margin:0 0 4px;font-size:1.05rem;}
+.lb-form .sub{color:var(--muted);font-size:0.86rem;margin:0 0 16px;}
+.lb-grid{display:grid;grid-template-columns:1.1fr 1.1fr 1fr 0.8fr 0.9fr auto;gap:10px;align-items:end;}
+.lb-field{display:flex;flex-direction:column;gap:5px;}
+.lb-field label{font-size:0.74rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.03em;}
+.lb-field input, .lb-field select{font-family:inherit;font-size:0.88rem;padding:9px 11px;border-radius:9px;border:1px solid var(--border);background:var(--bg);color:var(--text);width:100%;}
+.lb-field input:focus, .lb-field select:focus{outline:2.5px solid var(--accent);outline-offset:1px;}
+.lb-msg{font-size:0.82rem;margin-top:12px;padding:9px 12px;border-radius:9px;display:none;}
+.lb-msg.show{display:block;}
+.lb-msg.ok{background:var(--accent-tint);color:var(--accent-dark);}
+.lb-msg.err{background:var(--coral-tint);color:#A3341C;}
+.lb-table{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface);}
+.lb-row{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--border);}
+.lb-row:last-child{border-bottom:none;}
+.lb-row.top1{background:linear-gradient(90deg,var(--gold-tint),transparent);}
+.lb-rank{width:30px;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:0.95rem;color:var(--muted);text-align:center;}
+.lb-rank.medal{font-size:1.2rem;}
+.lb-who{flex:1;min-width:120px;}
+.lb-code{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--muted);}
+.lb-name{font-weight:600;font-size:0.94rem;}
+.lb-stat{text-align:center;min-width:70px;}
+.lb-stat .v{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;}
+.lb-stat .l{font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.03em;}
+.lb-rating{min-width:90px;text-align:center;}
+.lb-rating .v{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.3rem;color:var(--accent-dark);}
+.lb-rating .l{font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.03em;}
+.lb-actions{display:flex;gap:6px;flex-shrink:0;}
+.lb-actions button{font-family:inherit;font-size:0.74rem;font-weight:600;border:1px solid var(--border);background:var(--bg);color:var(--muted);padding:6px 10px;border-radius:999px;cursor:pointer;}
+.lb-actions button:hover{border-color:var(--accent);color:var(--accent-dark);}
+.lb-log{display:none;background:var(--bg);border-top:1px solid var(--border);padding:12px 18px;}
+.lb-log.open{display:block;}
+.lb-log-row{display:flex;align-items:center;gap:10px;font-size:0.8rem;padding:5px 0;color:var(--muted);}
+.lb-log-row b{color:var(--text);width:90px;flex-shrink:0;}
+.lb-log-row span.pct{width:50px;flex-shrink:0;}
+.lb-log-row button{margin-left:auto;background:none;border:none;color:var(--coral);cursor:pointer;font-size:0.75rem;font-weight:600;}
+.lb-empty{padding:30px 18px;text-align:center;color:var(--muted);font-size:0.9rem;}
+
+/* ---------- mobile-first refinements (site-wide) ---------- */
+@media (max-width:600px){
+  .wrap{padding:0 16px;}
+  .hero{padding:34px 0 26px;}
+  .topnav .wrap{height:auto;padding-top:10px;padding-bottom:10px;}
+  .navlinks{width:100%;gap:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;}
+  .navlinks a{padding:7px 11px;font-size:0.78rem;flex-shrink:0;}
+  .day-grid{grid-template-columns:1fr 1fr;gap:10px;}
+  .subject-cards{grid-template-columns:1fr;}
+  .pulse-card{padding:18px 16px;gap:16px;}
+  .pulse-stat .num{font-size:1.9rem;}
+  .weight-row{flex-wrap:wrap;row-gap:4px;}
+  .weight-row .wname{width:100%;}
+  .weight-row .wnum{width:auto;margin-left:auto;}
+  .subject-head{gap:14px;}
+  .progress-block{width:100%;min-width:0;}
+  .toolbar{width:100%;}
+  .toolbar .btn{flex:1;justify-content:center;}
+  .notes-card{padding:18px 16px;}
+  .lb-grid{grid-template-columns:1fr 1fr;}
+  .lb-grid .lb-field:last-child, .lb-grid button[type="submit"]{grid-column:1/-1;}
+  .lb-row{flex-wrap:wrap;row-gap:8px;}
+  .lb-who{width:100%;order:1;}
+  .lb-rank{order:0;}
+  .lb-stat, .lb-rating{min-width:0;flex:1;}
+  .lb-actions{order:3;width:100%;justify-content:flex-end;}
+}
+@media (max-width:400px){
+  .day-grid{grid-template-columns:1fr;}
+}
+
+
+</style></head>
+<body>
+<nav class="topnav"><div class="wrap">
+      <a class="logo" href="index.html" style="color:var(--text)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M2 12h4l2-7 3 14 2.5-9 1.5 4h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> MDCAT Prep Lab</a>
+      <div class="navlinks"><a class="" href="index.html">Home</a><a class="" href="biology.html">Biology</a><a class="" href="chemistry.html">Chemistry</a><a class="" href="physics.html">Physics</a><a class="" href="english.html">English</a><a class="" href="reasoning.html">Reasoning</a><a class="" href="leaderboard.html">Leaderboard</a></div>
+    </div></nav>
+    <header class="hero wrap">
+      <a class="back-link" href="english.html">&larr; Back to English test list</a>
+      <span class="eyebrow">Topic Notes · English</span>
+      <h1>English, the high-yield way</h1>
+      <p>These are the topics that show up on MDCAT test after test — condensed into exam-ready notes, not a full textbook rewrite. Use them to revise fast between mock tests, then go back to your textbook for anything that still feels shaky.</p>
+    </header>
+    <main class="wrap">
+      <section class="section-block" style="border-top:none;padding-top:0;">
+        <div class="toc"><a href="#tenses">Tenses</a><a href="#active-and-passive-voice">Active & Passive Voice</a><a href="#narration-direct-and-indirect-speech">Narration (Direct & Indirect Speech)</a><a href="#articles-prepositions-and-conjunctions">Articles, Prepositions & Conjunctions</a><a href="#vocabulary-—-synonyms-antonyms-and-idioms">Vocabulary — Synonyms, Antonyms & Idioms</a><a href="#sentence-correction-and-error-detection">Sentence Correction & Error Detection</a><a href="#reading-comprehension">Reading Comprehension</a></div>
+        <div class="notes-card" id="tenses">
+          <h3>Tenses <span class="tag">High-yield</span></h3>
+          <ul><li>English has 12 main tense forms across past/present/future, each split into simple, continuous, perfect, and perfect continuous — know the structural pattern (auxiliary + verb form) for each, not just the name.</li><li>Present simple is used for habitual actions and general truths ('Water boils at 100°C'); present continuous for actions happening right now or fixed future plans.</li><li>Present perfect (have/has + past participle) links a past action to the present ('I have finished') — MDCAT frequently tests confusion between past simple and present perfect.</li><li>Past perfect (had + past participle) describes an action completed before another past action — essential for narration/reported speech questions.</li><li>Subject–verb agreement: singular subjects take singular verbs even with intervening phrases ('Each of the students has...', not 'have').</li><li>Sequence of tenses: if the main clause is in the past, the subordinate clause generally also shifts to a past form, except for universal truths.</li><li>Watch for irregular past participles (gone/went, done/did, seen/saw) — a classic single-word error-spotting trap.</li></ul>
+          
+        </div><div class="notes-card" id="active-and-passive-voice">
+          <h3>Active & Passive Voice <span class="tag">High-yield</span></h3>
+          <ul><li>Active voice: subject performs the action ('The doctor examined the patient'); passive voice: subject receives the action ('The patient was examined by the doctor').</li><li>Passive formation: object of active sentence → subject of passive; verb becomes a form of 'be' + past participle; original subject becomes the 'by' agent (often omittable).</li><li>Only transitive verbs (verbs that take a direct object) can be converted to passive voice — intransitive verbs (e.g. 'arrive', 'sleep') cannot.</li><li>The tense of the active sentence determines the form of 'be' used in the passive (is/was/has been/will be, etc.) — match tense carefully during conversion.</li><li>Passive voice is preferred when the doer is unknown, unimportant, or obvious from context — common in scientific/formal writing, which MDCAT English draws heavily from.</li><li>Modal verbs form passive as modal + be + past participle ('The work must be completed').</li></ul>
+          
+        </div><div class="notes-card" id="narration-direct-and-indirect-speech">
+          <h3>Narration (Direct & Indirect Speech) <span class="tag">High-yield</span></h3>
+          <ul><li>Reporting verb changes: 'says/say' stays the same if reporting present speech, but 'said' triggers a full tense backshift in the reported clause.</li><li>Tense backshift: present simple → past simple, present continuous → past continuous, present perfect → past perfect, will → would, can → could, may → might.</li><li>Pronoun changes follow logic, not a fixed rule: shift pronouns to match who is speaking and who is being spoken about in the new context.</li><li>Time and place word changes: now → then, today → that day, tomorrow → the next day, here → there, this → that.</li><li>Interrogative sentences in indirect speech use reporting verbs like 'asked' and drop the question mark and auxiliary inversion ('He asked if/whether...' or 'He asked what...').</li><li>Imperative sentences use 'told/ordered/requested + to-infinitive' ('He told me to leave'), and exclamatory sentences typically become statements introduced by 'that', capturing the emotion in words rather than punctuation.</li></ul>
+          
+        </div><div class="notes-card" id="articles-prepositions-and-conjunctions">
+          <h3>Articles, Prepositions & Conjunctions <span class="tag">High-yield</span></h3>
+          <ul><li>'A' before consonant sounds, 'an' before vowel sounds — based on pronunciation, not spelling ('an hour', but 'a university').</li><li>'The' is used for specific/previously mentioned nouns, superlatives, unique objects (the sun), and some geographic names (rivers, oceans, mountain ranges).</li><li>Zero article is used with plural/uncountable nouns in a general sense, most proper nouns, and languages/subjects.</li><li>Common fixed preposition pairs are a high-yield rote-memory area: depend ON, interested IN, married TO, good AT, afraid OF, capable OF, similar TO.</li><li>Prepositions of time: 'at' for precise times, 'on' for days/dates, 'in' for months/years/longer periods.</li><li>Correlative conjunctions must match in structure (parallelism): either...or, neither...nor, not only...but also, both...and.</li><li>Subordinating conjunctions (although, because, since, unless) introduce dependent clauses; coordinating conjunctions (FANBOYS: for, and, nor, but, or, yet, so) join independent clauses.</li></ul>
+          
+        </div><div class="notes-card" id="vocabulary-—-synonyms-antonyms-and-idioms">
+          <h3>Vocabulary — Synonyms, Antonyms & Idioms <span class="tag">High-yield</span></h3>
+          <ul><li>Learn vocabulary in word families/roots rather than isolated words — recognising a common Latin/Greek root (e.g. 'bene-' = good, 'mal-' = bad) lets you infer meaning under exam pressure.</li><li>For synonym/antonym MCQs, first identify the part of speech and the word's likely context/tone (positive, negative, neutral) before matching options — this eliminates half the choices quickly.</li><li>Build a running list of idioms and one-word substitutions from past papers rather than a generic dictionary list — MDCAT tends to reuse a recognisable pool of items.</li><li>Watch for 'false friend' options: words that look similar to the correct answer but have a different or opposite meaning — a very common distractor technique.</li><li>Practising with short daily vocabulary sets (10–15 words) retains far better than cramming long lists once.</li></ul>
+          
+        </div><div class="notes-card" id="sentence-correction-and-error-detection">
+          <h3>Sentence Correction & Error Detection <span class="tag">High-yield</span></h3>
+          <ul><li>Subject–verb agreement errors are the single most common error type — check the true grammatical subject, not the noun physically closest to the verb.</li><li>Parallelism errors occur when list items or compared items don't share the same grammatical form ('I like reading, writing, and to swim' is wrong — should be 'and swimming').</li><li>Redundancy: eliminate phrases that repeat meaning unnecessarily ('return back', 'the reason is because').</li><li>Misplaced/dangling modifiers: a descriptive phrase must sit next to the word it actually modifies, or the sentence implies something illogical.</li><li>Read the whole sentence first before selecting an underlined correction — errors are sometimes only obvious in relation to the rest of the sentence.</li><li>When multiple options look grammatically valid, choose the most concise, standard-English option — MDCAT favours clarity over stylistic flourish.</li></ul>
+          
+        </div><div class="notes-card" id="reading-comprehension">
+          <h3>Reading Comprehension <span class="tag">High-yield</span></h3>
+          <ul><li>Skim the passage first for overall structure and main idea before reading questions in detail — don't try to memorise every fact on the first pass.</li><li>Read the questions before re-reading the passage in full, so you know exactly what to look for.</li><li>Answer strictly from the passage's content and logic — never rely on outside general knowledge, even if you know more about the topic.</li><li>For 'main idea' questions, the answer usually reflects the passage as a whole, not just one paragraph or a minor detail.</li><li>For inference questions, the correct answer is strongly implied but not directly stated — eliminate options that are either too literal (directly quoted, but for a different question type) or too big a leap beyond the text.</li><li>Manage time strictly: with English carrying only a small share of total marks, don't over-invest time on any single comprehension passage at the expense of other subjects.</li></ul>
+          
+        </div>
+      </section>
+    </main>
+<footer><div class="wrap"><div class="foot-row">
+      <span>Built for MDCAT aspirants preparing for Sunday, 16 August 2026.</span>
+      <span class="mono">Indus Academy &amp; Testing Service</span>
+    </div></div></footer>
+
+</body></html>

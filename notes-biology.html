@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biology Notes · MDCAT Prep Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg: #F5F8F6; --surface: #FFFFFF; --border: #DCE7E2; --text: #142521; --muted: #4B5F5A;
+  --teal: #0E6E5C; --teal-dark: #0A4F42; --teal-tint: #E4F1EC;
+  --gold: #C98A2E; --gold-tint: #FBF0DC;
+  --coral: #D8492A; --coral-tint: #FBE6E0;
+  --purple: #8E6FA8; --purple-tint: #F1EBF6;
+  --blue: #2F6FA8; --blue-tint: #E9F1F8;
+  --planned: #A9B8B3; --planned-tint: #EEF2F0;
+  --accent: #0E6E5C; --accent-tint: #E4F1EC; --accent-dark: #0A4F42;
+  --radius: 14px; --shadow: 0 1px 2px rgba(20,37,33,0.04), 0 8px 24px rgba(20,37,33,0.05);
+}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55;}
+h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.01em;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+a{color:inherit;} :focus-visible{outline:2.5px solid var(--accent);outline-offset:2px;border-radius:4px;}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px;}
+.topnav{position:sticky;top:0;z-index:20;background:rgba(245,248,246,0.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
+.topnav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;flex-wrap:wrap;gap:6px;}
+.logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:1.02rem;text-decoration:none;}
+.navlinks{display:flex;gap:6px;flex-wrap:wrap;}
+.navlinks a{text-decoration:none;font-size:0.85rem;font-weight:600;color:var(--muted);padding:8px 14px;border-radius:999px;transition:background .15s,color .15s;}
+.navlinks a:hover, .navlinks a.current{background:var(--accent-tint);color:var(--accent-dark);}
+.hero{padding:48px 0 34px;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:0.76rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent-dark);background:var(--accent-tint);padding:6px 12px;border-radius:999px;margin-bottom:18px;}
+.hero h1{font-size:clamp(1.9rem,4.4vw,2.9rem);font-weight:700;margin:0 0 14px;max-width:22ch;}
+.hero p{max-width:60ch;color:var(--muted);font-size:1.02rem;margin:0 0 8px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:0.84rem;font-weight:600;color:var(--muted);text-decoration:none;margin-bottom:18px;}
+.back-link:hover{color:var(--accent-dark);}
+.section-block{padding:36px 0;border-top:1px solid var(--border);scroll-margin-top:84px;}
+.section-head{margin-bottom:22px;max-width:66ch;}
+.section-head .kicker{font-family:'IBM Plex Mono',monospace;font-size:0.75rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent-dark);margin-bottom:8px;display:block;}
+.section-head h2{margin:0 0 8px;font-size:1.45rem;}
+.section-head p{margin:0;color:var(--muted);font-size:0.93rem;}
+footer{border-top:1px solid var(--border);padding:34px 0 50px;color:var(--muted);font-size:0.84rem;}
+.foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center;}
+.progress-block{min-width:200px;}
+.progress-bar{width:100%;height:8px;background:var(--planned-tint);border-radius:999px;overflow:hidden;margin-bottom:6px;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-dark));border-radius:999px;transition:width .25s ease;}
+.progress-text{font-size:0.8rem;color:var(--muted);text-align:right;}
+.subject-head{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:22px;}
+.subject-title{display:flex;align-items:center;gap:14px;}
+.subject-icon{width:46px;height:46px;border-radius:12px;background:var(--accent-tint);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.subject-icon svg{width:24px;height:24px;}
+.subject-title h1{margin:0;font-size:1.5rem;}
+.subject-title p{margin:2px 0 0;color:var(--muted);font-size:0.88rem;}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;align-items:center;justify-content:space-between;}
+.btn{text-decoration:none;font-size:0.82rem;font-weight:600;padding:9px 16px;border-radius:999px;white-space:nowrap;display:inline-flex;align-items:center;gap:7px;border:1px solid transparent;cursor:pointer;font-family:inherit;}
+.btn.primary{background:var(--accent);color:#fff;transition:background .15s;}
+.btn.primary:hover{background:var(--accent-dark);}
+.btn.ghost{background:var(--surface);color:var(--text);border-color:var(--border);transition:border-color .15s;}
+.btn.ghost:hover{border-color:var(--accent);}
+.btn.locked{background:transparent;color:var(--planned);border:1px solid var(--border);cursor:default;}
+.test-list{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface);}
+.test-row{display:flex;align-items:center;gap:16px;padding:15px 20px;border-bottom:1px solid var(--border);transition:background .15s;}
+.test-row:last-child{border-bottom:none;}
+.test-row.is-done{background:var(--accent-tint);}
+.test-num{font-family:'IBM Plex Mono',monospace;font-size:0.82rem;color:var(--muted);width:26px;flex-shrink:0;}
+.test-name{flex:1;font-size:0.93rem;min-width:170px;}
+.status{display:inline-flex;align-items:center;gap:7px;font-size:0.78rem;font-weight:600;padding:5px 11px;border-radius:999px;white-space:nowrap;}
+.status .swatch{width:7px;height:7px;border-radius:50%;display:inline-block;}
+.status.live{background:var(--accent-tint);color:var(--accent-dark);}
+.status.planned{background:var(--planned-tint);color:var(--muted);}
+.mark-check{display:inline-flex;align-items:center;gap:7px;font-size:0.78rem;font-weight:600;color:var(--muted);cursor:pointer;user-select:none;padding:5px 10px;border-radius:999px;border:1px solid var(--border);transition:border-color .15s,color .15s;}
+.mark-check input{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
+.mark-check.checked{border-color:var(--accent);color:var(--accent-dark);}
+@media (max-width:640px){.test-row{flex-wrap:wrap;}.test-name{order:1;width:100%;}}
+.notes-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin-bottom:16px;}
+.notes-card h3{margin:0 0 4px;font-size:1.1rem;display:flex;align-items:center;gap:10px;}
+.notes-card .tag{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;letter-spacing:0.04em;text-transform:uppercase;background:var(--accent-tint);color:var(--accent-dark);padding:3px 9px;border-radius:999px;}
+.notes-card ul{margin:10px 0 0;padding-left:20px;font-size:0.9rem;color:var(--text);}
+.notes-card li{margin-bottom:7px;}
+.notes-card li:last-child{margin-bottom:0;}
+.notes-card .sub{color:var(--muted);font-size:0.86rem;margin-top:8px;}
+.tip{display:flex;gap:10px;background:var(--gold-tint);border:1px solid #EED8AE;border-radius:12px;padding:13px 16px;font-size:0.85rem;color:#7A5518;margin-top:10px;}
+.tip b{color:#5E4212;}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+.toc a{text-decoration:none;font-size:0.82rem;font-weight:600;color:var(--accent-dark);background:var(--accent-tint);padding:7px 13px;border-radius:999px;}
+.toc a:hover{background:var(--accent);color:#fff;}
+
+/* ---------- leaderboard ---------- */
+.lb-form{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin-bottom:24px;}
+.lb-form h3{margin:0 0 4px;font-size:1.05rem;}
+.lb-form .sub{color:var(--muted);font-size:0.86rem;margin:0 0 16px;}
+.lb-grid{display:grid;grid-template-columns:1.1fr 1.1fr 1fr 0.8fr 0.9fr auto;gap:10px;align-items:end;}
+.lb-field{display:flex;flex-direction:column;gap:5px;}
+.lb-field label{font-size:0.74rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.03em;}
+.lb-field input, .lb-field select{font-family:inherit;font-size:0.88rem;padding:9px 11px;border-radius:9px;border:1px solid var(--border);background:var(--bg);color:var(--text);width:100%;}
+.lb-field input:focus, .lb-field select:focus{outline:2.5px solid var(--accent);outline-offset:1px;}
+.lb-msg{font-size:0.82rem;margin-top:12px;padding:9px 12px;border-radius:9px;display:none;}
+.lb-msg.show{display:block;}
+.lb-msg.ok{background:var(--accent-tint);color:var(--accent-dark);}
+.lb-msg.err{background:var(--coral-tint);color:#A3341C;}
+.lb-table{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface);}
+.lb-row{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--border);}
+.lb-row:last-child{border-bottom:none;}
+.lb-row.top1{background:linear-gradient(90deg,var(--gold-tint),transparent);}
+.lb-rank{width:30px;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:0.95rem;color:var(--muted);text-align:center;}
+.lb-rank.medal{font-size:1.2rem;}
+.lb-who{flex:1;min-width:120px;}
+.lb-code{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--muted);}
+.lb-name{font-weight:600;font-size:0.94rem;}
+.lb-stat{text-align:center;min-width:70px;}
+.lb-stat .v{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;}
+.lb-stat .l{font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.03em;}
+.lb-rating{min-width:90px;text-align:center;}
+.lb-rating .v{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.3rem;color:var(--accent-dark);}
+.lb-rating .l{font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.03em;}
+.lb-actions{display:flex;gap:6px;flex-shrink:0;}
+.lb-actions button{font-family:inherit;font-size:0.74rem;font-weight:600;border:1px solid var(--border);background:var(--bg);color:var(--muted);padding:6px 10px;border-radius:999px;cursor:pointer;}
+.lb-actions button:hover{border-color:var(--accent);color:var(--accent-dark);}
+.lb-log{display:none;background:var(--bg);border-top:1px solid var(--border);padding:12px 18px;}
+.lb-log.open{display:block;}
+.lb-log-row{display:flex;align-items:center;gap:10px;font-size:0.8rem;padding:5px 0;color:var(--muted);}
+.lb-log-row b{color:var(--text);width:90px;flex-shrink:0;}
+.lb-log-row span.pct{width:50px;flex-shrink:0;}
+.lb-log-row button{margin-left:auto;background:none;border:none;color:var(--coral);cursor:pointer;font-size:0.75rem;font-weight:600;}
+.lb-empty{padding:30px 18px;text-align:center;color:var(--muted);font-size:0.9rem;}
+
+/* ---------- mobile-first refinements (site-wide) ---------- */
+@media (max-width:600px){
+  .wrap{padding:0 16px;}
+  .hero{padding:34px 0 26px;}
+  .topnav .wrap{height:auto;padding-top:10px;padding-bottom:10px;}
+  .navlinks{width:100%;gap:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;}
+  .navlinks a{padding:7px 11px;font-size:0.78rem;flex-shrink:0;}
+  .day-grid{grid-template-columns:1fr 1fr;gap:10px;}
+  .subject-cards{grid-template-columns:1fr;}
+  .pulse-card{padding:18px 16px;gap:16px;}
+  .pulse-stat .num{font-size:1.9rem;}
+  .weight-row{flex-wrap:wrap;row-gap:4px;}
+  .weight-row .wname{width:100%;}
+  .weight-row .wnum{width:auto;margin-left:auto;}
+  .subject-head{gap:14px;}
+  .progress-block{width:100%;min-width:0;}
+  .toolbar{width:100%;}
+  .toolbar .btn{flex:1;justify-content:center;}
+  .notes-card{padding:18px 16px;}
+  .lb-grid{grid-template-columns:1fr 1fr;}
+  .lb-grid .lb-field:last-child, .lb-grid button[type="submit"]{grid-column:1/-1;}
+  .lb-row{flex-wrap:wrap;row-gap:8px;}
+  .lb-who{width:100%;order:1;}
+  .lb-rank{order:0;}
+  .lb-stat, .lb-rating{min-width:0;flex:1;}
+  .lb-actions{order:3;width:100%;justify-content:flex-end;}
+}
+@media (max-width:400px){
+  .day-grid{grid-template-columns:1fr;}
+}
+
+
+</style></head>
+<body>
+<nav class="topnav"><div class="wrap">
+      <a class="logo" href="index.html" style="color:var(--text)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M2 12h4l2-7 3 14 2.5-9 1.5 4h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> MDCAT Prep Lab</a>
+      <div class="navlinks"><a class="" href="index.html">Home</a><a class="" href="biology.html">Biology</a><a class="" href="chemistry.html">Chemistry</a><a class="" href="physics.html">Physics</a><a class="" href="english.html">English</a><a class="" href="reasoning.html">Reasoning</a><a class="" href="leaderboard.html">Leaderboard</a></div>
+    </div></nav>
+    <header class="hero wrap">
+      <a class="back-link" href="biology.html">&larr; Back to Biology test list</a>
+      <span class="eyebrow">Topic Notes · Biology</span>
+      <h1>Biology, the high-yield way</h1>
+      <p>These are the topics that show up on MDCAT test after test — condensed into exam-ready notes, not a full textbook rewrite. Use them to revise fast between mock tests, then go back to your textbook for anything that still feels shaky.</p>
+    </header>
+    <main class="wrap">
+      <section class="section-block" style="border-top:none;padding-top:0;">
+        <div class="toc"><a href="#genetics-and-evolution">Genetics & Evolution</a><a href="#coordination-and-control">Coordination & Control</a><a href="#reproduction">Reproduction</a><a href="#bioenergetics">Bioenergetics</a><a href="#cell-biology-and-cell-division">Cell Biology & Cell Division</a></div>
+        <div class="notes-card" id="genetics-and-evolution">
+          <h3>Genetics & Evolution <span class="tag">High-yield</span></h3>
+          <ul><li>Mendel's Law of Segregation and Law of Independent Assortment underlie the classic monohybrid 3:1 and dihybrid 9:3:3:1 ratios — practice Punnett squares until they're automatic.</li><li>Incomplete dominance blends both traits (e.g. snapdragon flower colour); codominance expresses both traits fully at once (e.g. IA/IB alleles in the ABO blood group).</li><li>ABO blood groups are controlled by three alleles (IA, IB, i) at one locus — IA and IB are codominant, i is recessive to both.</li><li>Sex-linked recessive traits (colour blindness, haemophilia) are carried on the X chromosome — carrier mothers (XAXa) pass the allele to 50% of sons, who are affected.</li><li>Linked genes (on the same chromosome) don't assort independently; crossing over in meiosis I creates recombinant gametes — recombination frequency estimates map distance.</li><li>Mutation types: point mutations (substitution, insertion, deletion) alter single bases; frameshift mutations shift the whole reading frame; chromosomal aberrations include deletion, duplication, inversion and translocation.</li><li>Darwin's natural selection rests on four observations: overproduction, variation, struggle for existence, and survival/reproduction of the best-adapted ("fitness").</li><li>Evidence for evolution: homologous structures (same origin, different function — e.g. forelimbs of vertebrates) vs analogous structures (different origin, same function — e.g. wings of insects and birds); also fossil records, biogeography, and molecular/DNA similarity.</li><li>Hardy–Weinberg equilibrium: p² + 2pq + q² = 1 and p + q = 1, valid only when there's no mutation, no migration, random mating, an infinitely large population, and no natural selection.</li><li>Speciation: allopatric speciation occurs via geographic isolation; sympatric speciation occurs without geographic separation (e.g. via polyploidy in plants).</li></ul>
+          <div class="tip"><span>&#128161;</span><div><b>Exam tip:</b> Genetics MCQs are almost always calculation-based — a quick, error-free Punnett square or pedigree read is worth more than memorising definitions.</div></div>
+        </div><div class="notes-card" id="coordination-and-control">
+          <h3>Coordination & Control <span class="tag">High-yield</span></h3>
+          <ul><li>A neuron transmits impulses via a resting potential (~-70mV, maintained by the Na+/K+ pump) that reverses into an action potential when threshold is reached.</li><li>Synaptic transmission is chemical: neurotransmitters cross the synaptic cleft and bind receptors on the postsynaptic membrane — acetylcholine is the classic exam example.</li><li>Reflex arc pathway: receptor → sensory neuron → relay neuron in spinal cord → motor neuron → effector — note it bypasses the brain for speed.</li><li>Major endocrine glands and hormones: pituitary (the 'master gland' — GH, TSH, ACTH, FSH/LH), thyroid (thyroxine — metabolic rate; calcitonin — lowers blood Ca2+), parathyroid (PTH — raises blood Ca2+), adrenal cortex/medulla (cortisol, adrenaline), pancreas (insulin lowers, glucagon raises blood glucose).</li><li>Hormonal control works mainly through negative feedback loops — e.g. rising thyroxine suppresses further TSH release from the pituitary.</li><li>Plant tropisms are directional growth responses to stimuli: phototropism (light), geotropism/gravitropism (gravity), thigmotropism (touch) — all mediated chiefly by auxin redistribution.</li><li>Key plant hormones: auxins (cell elongation, apical dominance), gibberellins (stem elongation, seed germination), cytokinins (cell division), abscisic acid (dormancy, stress/stomatal closure), ethylene (fruit ripening).</li><li>Eye: light is focused by the cornea and lens onto the retina, where rods (dim light, monochrome) and cones (colour, bright light) transduce it into nerve impulses.</li><li>Ear: the cochlea (hearing) and the semicircular canals/vestibule (balance) are both housed in the inner ear.</li><li>Diabetes mellitus Type 1 = insufficient insulin production (autoimmune destruction of β-cells); Type 2 = insulin resistance — a frequently tested distinction.</li></ul>
+          
+        </div><div class="notes-card" id="reproduction">
+          <h3>Reproduction <span class="tag">High-yield</span></h3>
+          <ul><li>Asexual reproduction methods: binary fission (bacteria, amoeba), budding (yeast, hydra), fragmentation, and spore formation (fungi) — no gamete fusion, offspring are genetically identical to the parent.</li><li>Spermatogenesis occurs in the seminiferous tubules of the testes; a diploid spermatogonium ultimately yields four haploid sperm.</li><li>Oogenesis occurs in the ovaries; a diploid oogonium yields one functional haploid ovum plus polar bodies (unequal cytoplasm division).</li><li>Menstrual cycle phases: follicular phase (FSH stimulates follicle growth, rising estrogen), ovulation (LH surge triggers egg release, ~day 14), luteal phase (corpus luteum secretes progesterone to maintain the uterine lining).</li><li>If fertilisation doesn't occur, the corpus luteum degenerates, progesterone falls, and menstruation begins.</li><li>Fertilisation restores the diploid number; the zygote divides to form a morula, then a blastocyst, which implants in the uterine wall.</li><li>The placenta handles gas exchange, nutrient transfer, and waste removal between mother and foetus, and secretes hormones (hCG, progesterone) that maintain pregnancy.</li><li>Flower structure: the stamen (anther + filament) is the male part producing pollen; the carpel/pistil (stigma, style, ovary) is the female part.</li><li>Double fertilisation in angiosperms is unique: one sperm fertilises the egg (→ diploid zygote), the other fuses with two polar nuclei (→ triploid endosperm, the seed's food store).</li><li>Lower plants (bryophytes, pteridophytes) show alternation of generations between a haploid gametophyte and a diploid sporophyte — know which stage dominates in mosses (gametophyte) vs ferns (sporophyte).</li></ul>
+          
+        </div><div class="notes-card" id="bioenergetics">
+          <h3>Bioenergetics <span class="tag">High-yield</span></h3>
+          <ul><li>Photosynthesis has two stages: light-dependent reactions in the thylakoid membrane (photosystems I & II split water, generate ATP and NADPH, release O2) and the light-independent Calvin cycle in the stroma (CO2 fixed by the enzyme RuBisCO into sugar).</li><li>Limiting factor concept: at any moment, photosynthesis rate is capped by whichever of light intensity, CO2 concentration, or temperature is in shortest supply.</li><li>C3 plants fix CO2 directly via RuBisCO (most plants); C4 plants (e.g. maize, sugarcane) first fix CO2 into a 4-carbon compound to minimise photorespiration in hot climates; CAM plants (e.g. cacti) fix CO2 at night to conserve water.</li><li>Cellular respiration has three main stages: glycolysis (cytoplasm, glucose → 2 pyruvate, net 2 ATP, doesn't need O2), the Krebs cycle (mitochondrial matrix, releases CO2 and electron carriers), and the electron transport chain (inner mitochondrial membrane, oxidative phosphorylation — the major ATP-generating step, ~34 ATP).</li><li>Total ATP yield from one glucose molecule via aerobic respiration is commonly cited as ~36–38 ATP.</li><li>Without oxygen, cells ferment pyruvate: lactic acid fermentation in muscle/some bacteria; alcoholic fermentation (ethanol + CO2) in yeast.</li><li>ATP is the universal energy currency — energy is stored/released in its phosphoanhydride bonds (ADP + Pi ⇌ ATP).</li><li>Enzymes lower activation energy via the induced-fit model (the active site moulds around the substrate); activity is affected by temperature, pH, substrate concentration, and inhibitors.</li><li>Competitive inhibitors resemble the substrate and bind the active site (overcome by more substrate); non-competitive inhibitors bind elsewhere and change enzyme shape (not overcome by more substrate).</li></ul>
+          
+        </div><div class="notes-card" id="cell-biology-and-cell-division">
+          <h3>Cell Biology & Cell Division <span class="tag">High-yield</span></h3>
+          <ul><li>Prokaryotic cells lack a membrane-bound nucleus and most organelles (bacteria, archaea); eukaryotic cells have a true nucleus and membrane-bound organelles (animals, plants, fungi, protists).</li><li>Key organelles: nucleus (genetic control), mitochondria ('powerhouse', site of aerobic respiration), ribosomes (protein synthesis), rough ER (protein processing, studded with ribosomes) vs smooth ER (lipid synthesis, detoxification), Golgi apparatus (packaging/modification), lysosomes (digestion, contain hydrolytic enzymes), chloroplasts (photosynthesis, plants only).</li><li>The cell membrane follows the fluid mosaic model: a phospholipid bilayer with embedded/peripheral proteins that can move laterally.</li><li>Transport across membranes: diffusion and osmosis are passive (no ATP, move down a gradient); active transport moves substances against a gradient and requires ATP; endocytosis/exocytosis move bulk material via vesicles.</li><li>The cell cycle: Interphase (G1 — growth, S — DNA replication, G2 — preparation) followed by Mitosis (prophase, metaphase, anaphase, telophase) and cytokinesis.</li><li>Mitosis produces two diploid, genetically identical daughter cells (growth/repair); meiosis produces four haploid, genetically varied cells (gamete formation).</li><li>Crossing over between homologous chromosomes occurs in prophase I of meiosis and is the main source of genetic variation, alongside independent assortment.</li><li>Uncontrolled cell division (loss of normal cell-cycle checkpoints, e.g. via oncogene activation or tumour-suppressor gene loss) underlies cancer — a common conceptual MCQ link between cell biology and genetics.</li></ul>
+          
+        </div>
+      </section>
+    </main>
+<footer><div class="wrap"><div class="foot-row">
+      <span>Built for MDCAT aspirants preparing for Sunday, 16 August 2026.</span>
+      <span class="mono">Indus Academy &amp; Testing Service</span>
+    </div></div></footer>
+
+</body></html>
